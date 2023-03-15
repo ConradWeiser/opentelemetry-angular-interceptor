@@ -87,6 +87,7 @@ export class OpenTelemetryHttpInterceptor implements HttpInterceptor {
       resource: Resource.default().merge(
         new Resource({
           [SemanticResourceAttributes.SERVICE_NAME]: this.config.commonConfig.serviceName,
+          [SemanticResourceAttributes.SERVICE_NAMESPACE]: this.config.commonConfig.serviceNamespace
         })
       ),
     });
