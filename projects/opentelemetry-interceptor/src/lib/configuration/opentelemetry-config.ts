@@ -1,5 +1,5 @@
 import { ClassProvider, ConstructorProvider, ExistingProvider, FactoryProvider, InjectionToken, ValueProvider } from '@angular/core';
-import { DiagLogger, DiagLogLevel } from '@opentelemetry/api';
+import { Attributes, DiagLogger, DiagLogLevel } from '@opentelemetry/api';
 import { InstrumentationOption } from '@opentelemetry/instrumentation';
 import { CustomSpan } from '../interceptor/custom-span.interface';
 
@@ -9,6 +9,10 @@ import { CustomSpan } from '../interceptor/custom-span.interface';
 export interface CommonCollectorConfig {
   /** serviceName : Name of service in trace */
   serviceName: string;
+  /** serviceNamespace : The namespace associated to this trace */
+  serviceNamespace?: string;
+  /** optionalResourceAttributes: A collection of optional Resource attributes */
+  optionalResourceAttributes?: Attributes
   /** console : boolean to trace in console */
   console?: boolean;
   /** production : boolean to use a BatchSpanExporter(async) or SimpleSpanExporter(sync) */
